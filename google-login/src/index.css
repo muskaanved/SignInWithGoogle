@@ -13,6 +13,79 @@ code {
 }
 
 .sidebar {
-  width: 100px;
   height: 100vh;
+  width: 4.5rem;
+}
+
+.content {
+  width: calc(100% - 4.5rem);
+  text-align: left;
+  padding: 0 50px;
+ 
+}
+
+.App {
+  display: flex;
+}
+
+.content-before-login {
+  background: url(images/bg-img.png) no-repeat right bottom;
+}
+
+.google-login {
+  width: 25%;
+  max-width: 400px;
+  margin: 55px 0 20px;
+}
+
+.google-login h2 {
+  font-size: 29px;
+  font-weight: 400;
+  color: #454545;
+  margin: 35px 0px;
+  line-height: 40px;
+}
+
+.google-login span {
+  font-size: 20px;
+  color: #8a8a8a;
+}
+
+.google-login h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #454545;
+  margin: 20px 0px;
+}
+
+.google-login-button {
+  width: 187px;
+  height: 30px;
+  background: #3772e0 !important;
+  box-shadow: none !important;
+}
+
+
+.google-login-button span {
+  color: #fff;
+}
+
+.google-login-button > div{
+  box-sizing: border-box;
+  width: 25px !important;
+  height: 24px !important;
+  padding: 0 !important;
+  line-height: 32px !important;
+  border-radius: 5px 0px 0px 5px !important;
+  margin-left: 2px !important;
+}
+
+.google-login-button > div path {
+  fill:#3772e0;
+}
+
+
+
+.google-login-button > div path:last-child {
+  fill:none;
 }
