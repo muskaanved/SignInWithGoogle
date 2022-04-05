@@ -1,5 +1,5 @@
 import React from 'react';
-import GoogleLogin, { GoogleLogout } from 'react-google-login';
+import {GoogleLogin, GoogleLogout } from 'react-google-login';
 import { useState } from 'react';
 
 function Login() {
@@ -24,13 +24,11 @@ function Login() {
 				'Content-Type': 'application/json',
 			},
 		});
-
 		const data = await res.json();
 		setLoginData(data);
 		localStorage.setItem('loginData', JSON.stringify(data));
-
 	}
-
+	
 	const handleLogout = () => {
 		localStorage.removeItem('loginData');
 		setLoginData(null);
@@ -44,6 +42,7 @@ function Login() {
 			<div>
 				{loginData ? (<div>
 					<h3>you logged in as {loginData.email}</h3>
+					<img src={loginData.picture} height="230px" width="542px"></img>
 
 					<GoogleLogout
 						clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
