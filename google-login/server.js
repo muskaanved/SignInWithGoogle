@@ -25,12 +25,12 @@ app.post('/api/google-login', async (req, res) => {
   });
   const { name, email, picture } = ticket.getPayload();
   upsert(users, { name, email, picture });
-  res.status(201);
+  // res.status(201);
   res.json({ name, email, picture });
 });
 
 app.use(express.static(path.join(__dirname, '/build')));
-app.get('*', (req, res) =>
+app.get('*', (req, res) => 
   res.sendFile(path.join(__dirname, '/build/index.html'))
 );
 
