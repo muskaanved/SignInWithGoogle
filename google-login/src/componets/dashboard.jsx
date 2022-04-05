@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import Login from './login';
-import Sidebar from './sidebar';
+
 class Dashboard extends Component {
     
     render() { 
         return (
             <React.Fragment>
-                <div className='sidebar'>
-                     <Sidebar/> 
-                </div>
+                
                 <div className='content-before-login content'>
                      <div className='google-login'>
                          <h3>AFFIDAVITS & RFI</h3>

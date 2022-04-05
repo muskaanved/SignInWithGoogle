@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import Sidebar from './sidebar';
+import React from 'react';
 import GoogleLogin, { GoogleLogout } from 'react-google-login';
 import { useState } from 'react';
 
@@ -29,12 +28,15 @@ function Login() {
         const data = await res.json();
         setLoginData(data);
         localStorage.setItem('loginData',JSON.stringify(data));
-    
+        if(data){
+        window.location.replace("/email");
+        }
       }
     
       const handleLogout = () => {
         localStorage.removeItem('loginData');
         setLoginData(null);
+        window.location.replace("/");
       };
    
     
@@ -42,13 +44,13 @@ function Login() {
             <React.Fragment>
         
                    
-            <div>
+            <div className='login'>
                         {loginData ? (<div>
-                        <h3>you logged in as {loginData.email}</h3>
+                        {/* <h3>you logged in as {loginData.email}</h3> */}
                         
-                        <GoogleLogout
+                        <GoogleLogout className='google-login-button'
                                 clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                                buttonText="Logout"
+                                buttonText="Sign out with Google"
                                 onLogoutSuccess={handleLogout}>
                                 </GoogleLogout>
                         </div>): (

@@ -12,6 +12,28 @@ code {
     monospace;
 }
 
+
+
+/* placeholder css */
+
+::-webkit-input-placeholder { /* Edge */
+  color: #d3d3d3;
+  opacity: 0.5;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #d3d3d3;
+  opacity: 0.5 !important;
+}
+
+::placeholder {
+  color: #d3d3d3;
+  opacity: 0.5 !important;
+  font-size: 14px;
+}
+
+/* placeholder css */
+
 .sidebar {
   height: 100vh;
   width: 4.5rem;
@@ -20,7 +42,7 @@ code {
 .content {
   width: calc(100% - 4.5rem);
   text-align: left;
-  padding: 0 50px;
+  padding: 15px 50px;
  
 }
 
@@ -89,3 +111,144 @@ code {
 .google-login-button > div path:last-child {
   fill:none;
 }
+
+
+/* email page */
+
+.email header {
+  display: flex;
+ 
+}
+
+.search {
+  width: calc(100% - 225px);
+  
+  margin-right: 21px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.email header .login {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#search-addon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 33px;
+  background: #454545 url(images/button.jpg) no-repeat center center;
+}
+
+.form-control.rounded {
+  height: 31px;
+}
+
+.email header h1 + span {
+  font-size: 10px;
+  font-weight: 600;
+  margin-left: 3px;
+}
+
+.email header h1 + span img {
+  margin-right: 3px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -1px;
+}
+
+
+/* mail section */
+
+.emailbox {
+  margin-top: 45px;
+}
+
+.email-section {
+  border: 1px solid #e6e7e8;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.bot {
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  border-radius: 100%;
+  background: #000;
+  margin:  0 15px;
+}
+
+.green {
+  background: #6ab27a;
+}
+
+.email-left.col-md-9 {
+  display: flex;
+  align-items: center;
+}
+
+.date {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #e6e7e8;
+  background: #f9f9f9;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 10px;
+  line-height: 13px;
+
+}
+
+.date span {
+  width: 100%;
+  font-size: 16px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.ta {
+  margin: 0 15px;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  border-radius: 100%;
+  background: #8a8a8a;
+  color: #fff;
+  line-height: 25px;
+  font-size: 14px;
+  text-align: center;
+}
+.mail-title h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0;
+  color: #5d5d5d;
+}
+
+.mail-title span{
+  color: #a5a4a5;
+  font-size: 16px;
+}
+.mail-title {
+  line-height: 31px;
+}
+
+.newproject {
+  border: 1px solid #5dacc7;
+  font-size: 12px;
+  color: #5dacc7;
+  padding: 3px 10px;
+  box-sizing: border-box;
+  margin: 5px 5px;
+  flex-wrap: wrap;
+  display: flex;
+  width: auto;
+  display: inline-block;
+}
+
+
