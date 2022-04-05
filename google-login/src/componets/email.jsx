@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Dashboard from './dashboard';
 import Login from './login';
+import data from "../data";
 
 class Email extends Component {
     
     render() { 
+        console.log(data,"dada")
         return (
             <React.Fragment>
                  {localStorage.getItem('loginData') ?
@@ -24,13 +26,18 @@ class Email extends Component {
                             <Login/>
                         </div>
                     </header>
-                    <div className='emailbox'>
-                        <div className='email-section rounded'>
+                    {data.map((item)=>{
+                        return(
+                        <div className='emailbox'>
+                        {item.payload.headers.map((headerItem)=>{
+                            return(
+                                <div className='email-section rounded'>
+                            {console.log(headerItem,"ttttt")} 
                            <div className='email-left col-md-9'>
                                 <input type="checkbox" />
                                 <span className='bot green'></span>
                                 <span className='date rounded'>
-                                    <span className='big'>12</span>
+                                    <span className='big'>{item.name == "Received" ? "5" :"77"}</span>
                                     Jan
                                 </span>
                                 <span className='ta'>TA</span>
@@ -46,29 +53,9 @@ class Email extends Component {
                                    <span className='newproject rounded'>New Project</span>
                             </div>    
                         </div>
-
-                        <div className='email-section rounded'>
-                           <div className='email-left col-md-9'>
-                                <input type="checkbox" />
-                                <span className='bot green'></span>
-                                <span className='date rounded'>
-                                    <span className='big'>12</span>
-                                    Jan
-                                </span>
-                                <span className='ta'>TA</span>
-                                <div className='mail-title'>
-                                    <h2>Fwd: New project 3 {10707/1715}</h2>
-                                    <span>Leo sub@gmail.com | January 12,2022 at 3:45PM |  </span>
-                                </div>
-                            </div>
-                            <div className='email-right col-md-3'>
-                                   <span className='newproject rounded'>New Project</span>
-                                   <span className='newproject rounded'>New Project</span>
-                                   <span className='newproject rounded'>New Project</span>
-                                   <span className='newproject rounded'>New Project</span>
-                            </div>    
-                        </div>
+                        )})}
                     </div>
+                     )})}
                 </div>
                 ): <Dashboard/> }
             </React.Fragment>    

@@ -1,6 +1,6 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {GoogleLogin, GoogleLogout } from 'react-google-login';
-import { useState } from 'react';
+import {BASE_URL} from "../config";
 
 function Login() {
 
@@ -14,23 +14,28 @@ function Login() {
         console.log(result);
       }
     
-      const handleLogin = async(googleData) => {
-        const res = await fetch('/api/google-login',{
-          method: 'POST',
-          body: JSON.stringify({
-            token:googleData.tokenId,
-          }),
-          headers:{
-            'Content-Type':'application/json',
-          },
-        });
+	
+      const handleLogin = (googleData) => {
+	
+		fetch(`${BASE_URL}/auth/google`).then((res)=>{console.log(res,"res")})
+
+		
+    //     const res = await fetch(`${BASE_URL}/auth/google`,{
+    //       method: 'GET',
+    //       body: JSON.stringify({
+    //         token:googleData.tokenId,
+    //       }),
+    //       headers:{
+    //         'Content-Type':'application/json',
+    //       },
+    //     });
     
-        const data = await res.json();
-        setLoginData(data);
-        localStorage.setItem('loginData',JSON.stringify(data));
-        if(data){
-        window.location.replace("/email");
-        }
+    //     const data = await res.json();
+    //     setLoginData(data);
+    //     localStorage.setItem('loginData',JSON.stringify(data));
+    //     if(data){
+    //     window.location.replace("/email");
+    //     }
       }
     
       const handleLogout = () => {
@@ -49,18 +54,19 @@ function Login() {
                         {/* <h3>you logged in as {loginData.email}</h3> */}
                         
                         <GoogleLogout className='google-login-button'
-                                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                                buttonText="Sign out with Google"
-                                onLogoutSuccess={handleLogout}>
-                                </GoogleLogout>
+							clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+							buttonText="Sign out with Google"
+							onLogoutSuccess={handleLogout}>
+                        </GoogleLogout>
                         </div>): (
-                            <GoogleLogin className='google-login-button'
+                        <GoogleLogin className='google-login-button'
                             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                             buttonText="Sign in with Google"
                             onSuccess={handleLogin}
                             onFailure={handleFailure}
-                            cookiePolicy={'single_host_origin'}>
-                            </GoogleLogin>
+                            cookiePolicy={'single_host_origin'}
+							scope={"'profile', 'email','https://mail.google.com/'"}>
+                        </GoogleLogin>
                             )}
             </div>
                    
