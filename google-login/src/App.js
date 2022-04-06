@@ -8,6 +8,7 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import EmailDetail from './componets/emailDetail';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Routes>
                  <Route exact path='/' element={< Dashboard />}></Route>
                  <Route exact path='/email' element={< Email />}></Route>
+                 {/* <Route exact path='/yourmail' element={< EmailDetail />}></Route> */}
                  <Route exact path='/GoogleLogin' element={<GoogleLogin/>}></Route>
           </Routes>
           </Router>

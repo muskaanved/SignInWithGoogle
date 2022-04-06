@@ -4,13 +4,13 @@ import { handleLogin, handleLogout } from '../action/auth';
 function Login() {
 	return (
 		<React.Fragment>
-			<div className='login'>
-				{localStorage.getItem("token") ? (<div>
-					<button onClick={handleLogout}>Logout</button>
-				</div>) : (
-					<button onClick={handleLogin}>Login</button>
+			
+				{localStorage.getItem("token") ? (
+					<button className='btn-login' onClick={handleLogout}><img src={require("../images/signout.jpg")}/></button>
+				) : (
+					<button className='btn-login' onClick={handleLogin}><img src={require("../images/signin.jpg")}/></button>
 				)}
-			</div>
+			
 		</React.Fragment>
 	);
 }
