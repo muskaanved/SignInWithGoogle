@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import Dashboard from './dashboard';
 import Login from './login';
-import { BASE_URL, INBOX_URL,REFRESH_TOKEN } from "../config";
+import { BASE_URL, INBOX_URL, REFRESH_TOKEN } from "../config";
 import moment from 'moment';
 
 const Email = () => {
     let token = localStorage.getItem('token')
     let status = localStorage.getItem('status')
 
-    if(status == true){
+    if (status == true) {
 
     }
-    else if(status == false){
+    else if (status == false) {
+
         fetch(`${BASE_URL}${REFRESH_TOKEN}`).then(results => results.json())
-        .then(data => {
-            localStorage.setItem('token', data.refreshToken);
-        })
+            .then(data => {
+                localStorage.setItem('token', data.refreshToken);
+            })
     }
-
 
     const [loginData, setLoginData] = useState([]);
 
@@ -43,7 +43,7 @@ const Email = () => {
         <React.Fragment>
             {token ?
                 (<div className='email content'>
-                    
+
                     <header>
                         <div className='col-md-6'><h1>Inbox</h1> <span><img src={require("../images/email.jpg")} />EMAILS</span></div>
                         <div className='col-md-6'>
@@ -58,14 +58,14 @@ const Email = () => {
                             <Login />
                         </div>
                     </header>
-                    
+
                     {loginData.map((item) => {
                         let date = item.payload.headers.find((e) => e.name === "Received");
                         let subject = item.payload.headers.find((e) => e.name === "Subject");
                         let from = item.payload.headers.find((e) => e.name === "From");
                         let attachment = item.payload.parts[1].filename;
-                      
-                        
+
+
                         return (
                             <div className='emailbox' key={item.id} >
                                 <div className='email-section rounded'>
@@ -79,14 +79,14 @@ const Email = () => {
                                         <span className='ta'>TA</span>
                                         <div className='mail-title'>
                                             <h2>{subject.value}</h2>
-                                            <span>{from.value} | {moment(JSON.stringify(date.value.split(";")[1])).format("MMMM DD,YYYY, mm:ss")} | { attachment ? <img src={require("../images/pin.jpg")}/> : ""}   </span>
+                                            <span>{from.value} | {moment(JSON.stringify(date.value.split(";")[1])).format("MMMM DD,YYYY, mm:ss")} | {attachment ? <img src={require("../images/pin.jpg")} /> : ""}   </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         )
                     })}
-                   
+
                 </div>
                 ) : <Dashboard />}
         </React.Fragment>
