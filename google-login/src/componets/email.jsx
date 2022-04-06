@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import Dashboard from './dashboard';
 import Login from './login';
-import { BASE_URL, INBOX_URL } from "../config";
+import { BASE_URL, INBOX_URL,REFRESH_TOKEN } from "../config";
 import moment from 'moment';
 
 const Email = () => {
     let token = localStorage.getItem('token')
+    let status = localStorage.getItem('status')
+
+    if(status == true){
+
+    }
+    else if(status == false){
+        fetch(`${BASE_URL}${REFRESH_TOKEN}`).then(results => results.json())
+        .then(data => {
+            localStorage.setItem('token', data.refreshToken);
+        })
+    }
+
 
     const [loginData, setLoginData] = useState([]);
 
