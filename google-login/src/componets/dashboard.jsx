@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Login from './login';
 
-class Dashboard extends Component {
+const Dashboard = () => {
+    return (
+        <React.Fragment>
 
-    render() {
-        return (
-            <React.Fragment>
-                
-                <div className='content-before-login content'>
-                    <div className='google-login'>
-                        <h3>AFFIDAVITS & RFI</h3>
-                        <h2> Looks like you're not yet connected with your Google Account </h2>
-                        <span>Lets make your trip fun and simple</span>
-                    </div>
-                    <Login />
+            <div className='content-before-login content'>
+                <div className='google-login'>
+                    <h3>AFFIDAVITS & RFI</h3>
+                    <h2> Looks like you're not yet connected with your Google Account </h2>
+                    <span>Lets make your trip fun and simple</span>
                 </div>
-            </React.Fragment>
-        );
-    }
+                <Login />
+            </div>
+        </React.Fragment>
+    );
+
 }
 
 export default Dashboard;

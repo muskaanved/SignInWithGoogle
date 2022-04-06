@@ -2,7 +2,7 @@ import './App.css';
 import Dashboard from './componets/dashboard';
 import Email from './componets/email';
 import Sidebar from './componets/sidebar';
-import Custom from './componets/custom';
+import GoogleLogin from './componets/googleLogin';
 import {
   BrowserRouter as Router,
   Routes,
@@ -21,7 +21,7 @@ function App() {
           <Routes>
                  <Route exact path='/' element={< Dashboard />}></Route>
                  <Route exact path='/email' element={< Email />}></Route>
-                 <Route exact path='/custom' element={<Custom/>}></Route>
+                 <Route exact path='/GoogleLogin' element={<GoogleLogin/>}></Route>
           </Routes>
           </Router>
     </div>
