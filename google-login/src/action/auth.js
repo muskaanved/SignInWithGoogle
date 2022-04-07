@@ -1,9 +1,9 @@
 import { AUTH_URL, BASE_URL } from "../config";
 
 export function handleLogin () {
-    fetch(`${BASE_URL}${AUTH_URL}`)
+   fetch(`${BASE_URL}${AUTH_URL}`)
     .then((res) => {
-        window.location.href(res.url) 
+        window.location.replace(res.url) 
     }) 
 }
 
