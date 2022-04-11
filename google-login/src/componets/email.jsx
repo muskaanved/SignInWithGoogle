@@ -3,10 +3,17 @@ import Dashboard from './dashboard';
 import Login from './login';
 import { BASE_URL, INBOX_URL, REFRESH_TOKEN } from "../config";
 import moment from 'moment';
+// import Pagination from "react-js-pagination";
 
 const Email = () => {
     let token = localStorage.getItem('token')
     let status = localStorage.getItem('status')
+    // const [activePage, setActivePage] = useState(5);
+
+    // const handlePageChange = (pageNumber) => {
+    //     console.log(`active page is ${pageNumber}`);
+    //     setActivePage(pageNumber)
+    //   }
 
     if (status == true) {
 
@@ -59,13 +66,28 @@ const Email = () => {
                         </div>
                     </header>
 
+                    {/* <Pagination
+        //   activePage={activePage}
+        //   itemsCountPerPage={loginData}
+        //   totalItemsCount={1}
+        //   pageRangeDisplayed={loginData}
+        //   onChange={handlePageChange}
+         data={loginData}
+            RenderComponent={loginData}
+            title="Posts"
+            pageLimit={2}
+            dataLimit={10}
+        /> */}
                     {loginData.map((item) => {
                         let date = item.payload.headers.find((e) => e.name === "Received");
                         let subject = item.payload.headers.find((e) => e.name === "Subject");
                         let from = item.payload.headers.find((e) => e.name === "From");
+                        let MessageId = item.payload.headers.find((e) => e.name === "Message-ID");
                         let attachment = item.payload.parts[1].filename;
-
-
+                        let attachmentID = item.payload.parts[1].body.attachmentId;
+                        
+                        
+                        
                         return (
                             <div className='emailbox' key={item.id} >
                                 <div className='email-section rounded'>
@@ -80,6 +102,7 @@ const Email = () => {
                                         <div className='mail-title'>
                                             <h2>{subject.value}</h2>
                                             <span>{from.value} | {moment(JSON.stringify(date.value.split(";")[1])).format("MMMM DD,YYYY, mm:ss")} | {attachment ? <img src={require("../images/pin.jpg")} /> : ""}   </span>
+                                            {/* <img src={"https://gmail.googleapis.com/gmail/v1/users/"+localStorage.getItem('userEmail')+"/messages/"+JSON.stringify(MessageId.value)+"/"+attachment+"/"+attachmentID} /> */}
                                         </div>
                                     </div>
                                 </div>
